@@ -1,0 +1,26 @@
+#include<stdio.h>
+
+void tower(int n, char frompeg, char topeg, char auxpeg);
+
+int main()
+{
+    int n;
+    printf("Enter the number of discs: \n");
+    scanf("%d", &n);
+    printf("The number of moves in the Tower of Hanoi problem:\n");
+    tower(n, 'A', 'C', 'B');
+    return 0;
+}
+
+void tower(int n, char frompeg, char topeg, char auxpeg)
+{
+    if(n == 1)
+    {
+        printf("Move disk 1 from %c to %c\n", frompeg, topeg);
+        return;
+    }
+
+    tower(n - 1, frompeg, auxpeg, topeg);
+    printf("Move disk %d from %c to %c\n", n, frompeg, topeg);
+    tower(n - 1, auxpeg, topeg, frompeg);
+}
